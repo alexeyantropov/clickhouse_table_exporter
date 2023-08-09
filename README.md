@@ -1,2 +1,1 @@
-# clickhouse_table_exporter
-A prometheus exporter for collecting tables size metrics.
+Original ideas from https://gist.github.com/sanchezzzhak/511fd140e8809857f8f1d84ddb937015
