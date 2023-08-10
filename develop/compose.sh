@@ -26,7 +26,8 @@ ctrl_c () {
 }
 
 # Run them!
-docker compose $compose_common_arg up --wait --force-recreate --renew-anon-volumes 
+#docker compose $compose_common_arg up --wait --force-recreate --renew-anon-volumes
+docker compose $compose_common_arg up --force-recreate --renew-anon-volumes 
 
 # Wait for the startup process. Don't use sleep() here! Only pooling!
 set +x
