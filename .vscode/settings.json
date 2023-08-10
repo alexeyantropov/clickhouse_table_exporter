@@ -1,0 +1,3 @@
+{
+    "python.defaultInterpreterPath": "~/miniconda/envs/clickhouse_table_exporter/bin/python"
+}

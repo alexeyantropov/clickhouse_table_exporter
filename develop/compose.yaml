@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  clickhouse:
+    container_name: clickhouse-${CLICKH_VERSION}
+    image: ${CLICKH_IMAGE}
+    ports:
+      - ${CLICKH_PORT_HTTP}:${CLICKH_PORT_HTTP}
+      - ${CLICKH_PORT_NATIVE}:${CLICKH_PORT_NATIVE}
+    environment:
+      - CLICKHOUSE_USER=${CLICKHOUSE_USER}
+      - CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASSWORD}
+      - CLICKHOUSE_DB=${CLICKHOUSE_DB}
+    volumes:
+      - ./sql-create-databases.sql:/docker-entrypoint-initdb.d/01.sql
+      - ./sql-add-data-1.sql:/docker-entrypoint-initdb.d/02.sql
+    cap_add:
+      - IPC_LOCK
