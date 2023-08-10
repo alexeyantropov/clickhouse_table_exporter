@@ -6,7 +6,7 @@
 - [How to setup](#how-to-setup)
 - [Dependencies](#dependencies)
 - [How to run](#how-to-run)
-    - [<a name='Devenv'></a>Dev env](#a-namedevenvadev-env)
+    - [Dev env](#dev-env)
 - [Credits](#credits)
 
 <!-- /TOC -->
@@ -61,6 +61,11 @@ TODO: Make a pip package and docker container!
 ```
 CH_TE_DEBUG=1 ./develop/run.sh
 ```
+
+# Roadmap
+- PIP package
+- Docker image
+- Github releases
 
 # Credits
 - Thx for all cool guys and gals in this thread https://gist.github.com/sanchezzzhak/511fd140e8809857f8f1d84ddb937015
