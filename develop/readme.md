@@ -10,6 +10,8 @@
     - [a test env](#a-test-env)
     - [tests](#tests)
     - [app](#app)
+- [How to build](#how-to-build)
+    - [Upload to test pypi](#upload-to-test-pypi)
 
 <!-- /TOC -->
 
@@ -17,11 +19,14 @@
 Originally I use MacOS for developing and write all scripts for Mac. Ispite of this there isn't any reason for not working on Linux systems but could get some difficulties on Windows.
 
 # VS Code and miniconda intergration
+
 ## Mac OS
+
 ### Install the miniconda distro if it's needed 
 ```
 # curl -o /tmp/m.sh -s https://repo.anaconda.com/miniconda/Miniconda3-py39_23.5.2-0-MacOSX-arm64.sh && bash /tmp/m.sh -b -p $HOME/miniconda
 ```
+
 ### Prepare a separate env
 Create 
 ```
@@ -37,10 +42,12 @@ Check
 ```
 # ~/miniconda/envs/clickhouse_table_exporter/bin/pip list local | egrep 'click|prom'
 ```
+
 ## vs code config
 A workspace configuration into ./.vscode/settings.json. It contains the path for the miniconda env for syntax and methods highlighting.
 
 # How to run 
+
 ## a test env
 ```
 ./develop/compose.sh
@@ -58,3 +65,17 @@ The test env is needed!
 ./develop/run.sh
 ```
 The test env is needed!
+
+# How to build
+
+## Upload to test pypi
+You need a config file based on the root dir with name ./.pypirc-test.ini with your pypi token:
+```
+[testpypi]
+  username = __token__
+  password = pypi-...
+```
+Next run the following script:
+```
+./develop/upload-test.sh
+```

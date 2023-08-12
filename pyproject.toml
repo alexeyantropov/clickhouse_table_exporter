@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clickhouse_table_exporter"
+version = "20230811"
+dependencies = [
+    "clickhouse-connect>=0.6.8",
+    "prometheus_client>=0.17.1"
+]
+
+authors = [
+  { name="Alexey Antropov", email="alexeyantropov@gmail.com" },
+]
+description = "A Python exporter for collecting clickhouse tables sizes."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/alexeyantropov/clickhouse_table_exporter"
+"Bug Tracker" = "https://github.com/alexeyantropov/clickhouse_table_exporter/issues"
