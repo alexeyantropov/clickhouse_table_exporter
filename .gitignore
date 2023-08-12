@@ -162,3 +162,4 @@ cython_debug/
 # local from thvac repo
 hello-world.py
 cov-report
+.pypirc*
