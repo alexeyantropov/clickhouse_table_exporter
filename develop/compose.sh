@@ -11,7 +11,9 @@ if ! test -f $env_file; then
     exit 1
 fi
 
+set +e
 export $(eval "echo \"$(cat $env_file)\"")
+set -e
 source $env_file 
 
 if ! test -f $compose_file; then

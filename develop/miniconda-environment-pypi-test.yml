@@ -1,0 +1,8 @@
+---
+name: clickhouse_table_exporter_pypi_test
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip=23.2

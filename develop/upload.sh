@@ -15,15 +15,16 @@ export $(eval "echo \"$(cat $env_file)\"")
 basename=$(basename $0)
 
 if test "$basename" = "upload-test.sh"; then
-    pypi_rc='./.pypirc-test.ini'
+    repository='testpypi'
 elif test "$basename" = "upload-prod.sh"; then
-    pypi_rc='./.pypirc-prod.ini'
+    repository='pypi'
 else
     echo "Do not run upload.sh!"
     exit 1
 fi
-
+pypi_rc='./.pypirc.ini'
 check_file $pypi_rc
 
+find ./dist/ -name 'clickhouse_table_exporter*' -delete
 $PYTHON_EXE -m build && \
-$PYTHON_EXE -m twine upload --config-file $pypi_rc --repository testpypi dist/*
+$PYTHON_EXE -m twine upload --verbose --config-file $pypi_rc --repository $repository dist/*
