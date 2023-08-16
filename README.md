@@ -3,10 +3,17 @@
 - [Clickhouse table exporter](#clickhouse-table-exporter)
 - [Provided metrics](#provided-metrics)
 - [Example output](#example-output)
+- [How to install](#how-to-install)
+    - [Docker](#docker)
+    - [Python module from pypi](#python-module-from-pypi)
+- [How to run](#how-to-run)
+    - [Docker](#docker)
+    - [Bare python](#bare-python)
+    - [What is next?](#what-is-next)
+    - [Dev env](#dev-env)
 - [How to setup](#how-to-setup)
 - [Dependencies](#dependencies)
-- [How to run](#how-to-run)
-    - [Dev env](#dev-env)
+- [Roadmap](#roadmap)
 - [Credits](#credits)
 
 <!-- /TOC -->
@@ -36,6 +43,37 @@ clickhouse_table_exporter_table_avg_day_size{database="foo",table="t1"} 6237.175
 clickhouse_table_exporter_table_avg_day_size{database="foo",table="t2"} 2072.2592542634943
 ```
 
+# How to install
+## Docker
+```
+$ docker pull alexeyantropov/clickhouse-table-exporter
+```
+## Python module from pypi
+```
+$ python3 -m pip install clickhouse-table-exporter
+```
+
+# How to run
+## Docker
+```
+$ docker run -t -i -p 9001:9001 \
+    --env CLICKHOUSE_HOST=192.168.50.120 --env CLICKHOUSE_PORT=8123 \
+    --env CLICKHOUSE_USER=my_exporter --env CLICKHOUSE_PASS=your_exporter \
+    clickhouse-table-exporter
+```
+## Bare python
+E.g. for rpm packages
+```
+$ python3 /.../site-packages/exporter.py
+```
+## What is next?
+Now the exporter is ready to scrape by Promethus.
+
+## Dev env 
+```
+$ CH_TE_DEBUG=1 ./develop/run.sh
+```
+
 # How to setup
 All configuration is provided by environment variables
 
@@ -51,23 +89,11 @@ All configuration is provided by environment variables
 - clickhouse_connect
 - prometheus_client
 
-# How to run
-```
-# ./src/exporter.py
-```
-TODO: Make a pip package and docker container!
-
-## Dev env 
-```
-CH_TE_DEBUG=1 ./develop/run.sh
-```
-
 # Roadmap
-- PIP package
-- Docker image
 - Github releases
 
 # Credits
 - Thx for all cool guys and gals in this thread https://gist.github.com/sanchezzzhak/511fd140e8809857f8f1d84ddb937015
 - How to write an exporter on Python https://trstringer.com/quick-and-easy-prometheus-exporter/
 - Clickhouse connector https://clickhouse.com/docs/en/integrations/python
+- How to deploy a Python package https://packaging.python.org/en/latest/tutorials/packaging-projects/

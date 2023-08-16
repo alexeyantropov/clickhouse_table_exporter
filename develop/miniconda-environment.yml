@@ -7,7 +7,7 @@ dependencies:
   - python=3.9
   - pip=23.2
   - build
-  - clickhouse-connect=0.6.8
+  - clickhouse-connect=0.6.7
   - prometheus_client=0.17.1
   - pip:
       - pytest==7.1.2
