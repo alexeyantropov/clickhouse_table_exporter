@@ -166,14 +166,22 @@ SELECT database, table, size, rows, days, avgDaySize FROM (
         The method is useful for monitoring. Check the clickhouse server availability.
         """
 
-        q = 'SELECT NOW()'
+        q = "SELECT DISTINCT database FROM system.parts WHERE database = 'system'"
 
         if self.clickhouse_client is None:
             self.clickhouse_client = self.__client_setup()
         try:
             r = self.clickhouse_client.query(q)
-            # r.result_rows = [(datetime.datetime(2023, 8, 10, 13, 12, 49, tzinfo=<UTC>),)]
-            if len(r.result_rows) > 0 and r.result_rows[0][0].year == datetime.date.today().year: 
+            """
+            sql is:
+            ┌─database─┐
+            │ system   │
+            └──────────┘
+            r.result_rows is:
+            [('system',)]
+            """
+            
+            if len(r.result_rows) > 0 and r.result_rows[0][0] == 'system': 
                 return(True)
             
         except Exception as err:
