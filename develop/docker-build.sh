@@ -14,7 +14,7 @@ check_file $pyproject_toml
 PACKAGE_VERSION=$(egrep '^version' $pyproject_toml | awk -F '=' '{print $NF}'  | sed s'/"//'g | xargs)
 PACKAGE_NAME='clickhouse-table-exporter'
 
-docker build --build-arg="PACKAGE_VERSION=$PACKAGE_VERSION" --tag ${PACKAGE_NAME} .
+docker build --build-arg="PACKAGE_VERSION=$PACKAGE_VERSION" --platform linux/amd64 --tag ${PACKAGE_NAME} .
 docker tag $PACKAGE_NAME:latest $PACKAGE_NAME:$PACKAGE_VERSION
 
 # Upload to docker hub
