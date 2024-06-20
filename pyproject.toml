@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "clickhouse_table_exporter"
-version = "20230917"
+version = "20240620"
 dependencies = [
     "clickhouse-connect>=0.6.7",
     "prometheus_client>=0.17.1"
